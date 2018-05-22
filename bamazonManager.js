@@ -36,7 +36,8 @@ function runSearch() {
                 "View Products for Sale",
                 "View Low Inventory",
                 "Add to Inventory",
-                "Add New Product"
+                "Add New Product",
+                "quit"
             ]
         })
         .then(function (answer) {
@@ -56,6 +57,8 @@ function runSearch() {
                 case "Add New Product":
                     newProduct();
                     break;
+                case "quit":
+                    connection.end();
             }
         });
 }

@@ -12,7 +12,7 @@ CREATE TABLE products  (
   department_name  VARCHAR(45) NULL,
   price int NULL,
   stock_quantity INT NULL,
-  product_sales INT 0
+  product_sales INT Null,
   PRIMARY KEY (item_id)
 );
 
@@ -53,4 +53,5 @@ VALUES ("Stapler", "Office Supplies", 3, 400, 0);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity, product_sales)
 VALUES ("Printer", "Technology", 150, 30, 0);
-	
+
+INSERT INTO departments SELECT DISTINCT NULL, department_name, 1000 FROM products;

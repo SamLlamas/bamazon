@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     printAll();
-    setTimeout(function () { runSearch(); }, 100);
+    setTimeout(function () { runSearch();}, 100);
 
 });
 
@@ -25,19 +25,21 @@ connection.connect(function (err) {
 
 
 function runSearch() {
-    tablelength = [];
-    var query1 = "SELECT * FROM bamazon.products;";
+    
+    var query1 = "SELECT * FROM products;";
     connection.query(query1, function (err, res) {
         for (i = 0; i < res.length; i++) {
             tablelength.push(String(i + 1));
         }
     });
+    setTimeout(function (err) {
+    if (err) throw err;
     inquirer
         .prompt([
             {
                 name: "action",
                 type: "list",
-                message: "Which Item would you like to purchase",
+                message: "Which item would you like to purchase",
                 choices: tablelength
             },
             {
@@ -80,7 +82,8 @@ function runSearch() {
                     runSearch();
                 }
             });
-        });
+        })
+    , 100});
 }
 
 var printAll = function () {
